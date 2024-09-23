@@ -1,0 +1,44 @@
+<div class="screensession-box">
+  <h1 class="index-title">Create a new Screen</h1>
+
+  <%= form_with model: @screen do |form| %>
+    <% if form.object.errors.any? %>
+        <% form.object.errors.full_messages.each do |message| %>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+            <%= message %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          </div>      
+        <% end %>
+    <% end %>
+
+    <div class="insert-title">
+      <%= form.label :name, "Enter Title", class: "bold-title" %>
+      <%= form.text_field :name, class: "form-control slides-form-input edit-slideshow-form-input" %>
+    </div>
+
+    <h3 class="slideshow-section-title">Select a Slideshow</h3>
+    <div class="slideshow-select-section new-slideshow-select-section">
+      <% Slideshow.all.each do |slideshow| %>
+        <div class="slideshow-checkbox-container">
+          <%= form.label :slideshow_ids, class: "form-check-label", for: "slideshow_#{slideshow.id}" do %>
+            <%= form.check_box :slideshow_ids, { multiple: true, id: "slideshow_#{slideshow.id}", class: "single-select-checkbox form-check-input" }, slideshow.id, nil %>
+            <span><%= slideshow.name %></span>
+            <div class="slideshows-images-container-edit">
+              <% slideshow.slides.each do |slide| %>
+                <div class="slideshows-previmages-edit">
+                  <%= image_tag slide.image, class: "slideshow-image" if slide.image.present? %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="edit-slideshow">
+      <%= form.submit "Submit Changes", class: "submit-button editpage-edit-button", data: { turbo: false } %>
+      <%= link_to "&#8617;".html_safe, screens_path, class: "btn btn-outline-secondary back-button" %>
+    </div>
+  <% end %>
+</div>

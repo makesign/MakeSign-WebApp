@@ -1,0 +1,78 @@
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';
+@import './index.scss';
+@import './session.scss';
+@import './navbar.scss';
+@import './slides.scss';
+@import './slideshows.scss';
+@import './screens.scss';
+@import './main_index.scss';
+@import './indicator.scss'; 
+
+@font-face {
+    font-family: 'Htw-Bold';
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url("/fonts/Htw-Bold.ttf")
+ }
+
+ @font-face {
+    font-family: 'Htw-Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url("/fonts/Htw-Regular.ttf")
+ }
+
+body{
+    font-family: 'Htw-Regular';
+    background-color: rgb(250, 252, 253);
+}
+
+/*Generally used button designs*/
+.submit-button {
+    color: white;
+    background-color: #ba0066;
+    font-family: Htw-Bold;
+    font-size: medium;
+    padding: 0.35rem;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    outline: none;
+}
+.submit-button:hover,
+.submit-button:focus,
+.submit-button:active {
+    background-color: #b34b84;
+    outline: none;
+    box-shadow: none;
+}
+
+.editpage-edit-button{
+    width: 100%;
+}
+
+.back-button{
+    padding: 0.35rem;
+    margin-top: 1rem;
+    width: 5rem;
+}
+
+.delete-button{
+    padding: 0.35rem;
+    margin-top: 1rem;
+    width: 5rem;
+}
+
+.manage-button{
+    padding: 0.35rem;
+    margin-top: 1rem;
+    width: 10rem;
+    font-family: Htw-Bold;
+}
+
+.bold-title{
+    font-family: Htw-Bold;
+}

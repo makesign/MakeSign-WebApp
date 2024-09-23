@@ -1,0 +1,19 @@
+<div class="signin-box">
+  <div class="logo-section">
+    <%= image_tag "Makesign_Logo.png", alt: "Logo", class: "signin-logo" %>
+  </div> 
+  <div class="fillout-section">
+    <h1 class="signin-title">Reset Your Password</h1>
+
+    <%= form_with model: @user, url: password_reset_path do |form| %>
+      <div class="input">
+        <%= form.label :email, "E-Mail" %> 
+        <%= form.email_field :email, class: "form-control form-input", placeholder: "name@example.com", required: true %>
+        </div>
+      <div class="signin-submit">
+        <%= form.submit "Send email", class: "submit-button" %>
+      </div>
+    <% end %>
+  </div> 
+</div>
+

@@ -1,0 +1,105 @@
+.navbar{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-family: Htw-Bold;
+}
+
+.nav-title:hover,
+.signin-link:hover,
+.user:hover{
+    color:#ba0066;
+}
+
+/* Navbar header on left */
+.navbar-logo{
+    height: 5rem;
+    width: auto;
+}
+.navbar-header{
+    display: flex;
+    align-items: center;
+}
+.navbar-header-link{
+    text-decoration: none;
+}
+.nav-title{
+    padding-top: 0.5rem;
+    text-decoration: none;
+    color: black;
+}
+
+/* Navbar buttons in center */
+.navbar-buttons{
+    justify-content: center;
+    margin-right: 5rem;
+    align-items: center;
+}
+.navbar-buttons ul{
+    padding-top: 0.5rem;
+    display: flex;
+    list-style-type: none;
+    
+}
+.navbar-buttons li{
+    margin: 0 1rem;
+}
+.navlink{
+    text-decoration: none;
+    color: black;
+}
+.custom-navlink {
+    color: #808080; 
+    opacity: 0.5; 
+    transition: color 0.3s, opacity 0.3s; 
+}
+.custom-navlink:hover{
+    color: #ba0066; 
+    opacity: 1; 
+}
+
+/* Navbar user section on right */
+.navbar-user{
+    padding-right: 3rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+}
+
+.dropdown-menu{
+    padding: 1rem;
+    font-size: 1.1rem;
+    margin-left: -4rem;
+    width: 12rem;
+}
+.dropdown-menu li {
+    margin-bottom: 0.5rem;
+}
+.dropdown-menu li:last-child {
+    margin-bottom: 0rem;
+}
+
+.signout-button{
+    width: 100%;
+}
+
+.signin-link{
+    text-decoration: none;
+    color:black;
+}
+
+.user-icon{
+    height: 2rem;
+    width: auto;
+    align-items: center;
+}
+
+.edit-password{
+    text-decoration: none;
+    color: black;
+}
+.edit-password:hover{
+    color:gray;
+}

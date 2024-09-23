@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Site</title>
+    <style>
+        /* Your CSS styling */
+        :root {
+            --black: rgb(23, 25, 28);
+            --white: rgb(255, 255, 255);
+            --transparent: rgba(255, 255, 255, 0);
+
+            --gray-50: rgb(245, 247, 250);
+            --gray-100: rgb(233, 237, 242);
+            --gray-200: rgb(210, 216, 226);
+            --gray-300: rgb(166, 172, 184);
+            --gray-400: rgb(133, 138, 150);
+            --gray-500: rgb(110, 115, 127);
+            --gray-600: rgb(94, 99, 112);
+            --gray-700: rgb(77, 82, 94);
+            --gray-800: rgb(64, 69, 79);
+            --gray-900: rgb(41, 45, 54);
+            --gray-950: rgb(20, 23, 24);
+
+            --purple: rgb(128, 0, 255);
+
+            --mint-50: rgb(235, 251, 247);
+            --mint-100: rgb(219, 245, 241);
+            --mint-200: rgb(199, 240,232);
+            --mint-300: rgb(175, 229, 218);
+            --mint-400: rgb(126, 194, 173);
+            --mint-500: rgb(92, 163, 144);
+            --mint-600: rgb(63, 122, 109);
+            --mint-700: rgb(42, 87, 80);
+            --mint-800: rgb(27, 56, 47);
+            --mint-900: rgb(18, 36, 28);
+            --mint-950: rgb(10, 21, 17);
+
+            --font-size-huge-text: 128px;
+            --font-size-heading-1: 64px;
+            --font-size-heading-2: 48px;
+            --font-size-heading-3: 32px;
+            --font-size-heading-4: 24px;
+            --font-size-subheading: 20px;
+            --font-size-body: 16px;
+
+            --base-font-size: 16px;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--black);
+            font-family: 'HTWBerlinOffice', sans-serif;
+            font-size: var(--base-font-size);
+        }
+
+        body * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 1500px) {
+            :root {
+                --base-font-size: 32px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            :root {
+                --base-font-size: 32px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            :root {
+                --base-font-size: 32px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            :root {
+                --base-font-size: 32px;
+            }
+        }
+
+        #main-header {
+            height: 10vh;
+            padding: 0 2.75vw;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background-color: var(--black);
+            z-index: 10;
+        }
+
+        .logo {
+            color: var(--white);
+            font-size: 4rem; 
+            font-weight: bold;
+        }
+
+        .navigation_items {
+            display: flex;
+            flex-flow: row nowrap;
+            gap: 60px;
+            white-space: nowrap;
+        }
+
+        .navigation_items > * {
+            color: var(--gray-600);
+            font-size: 3rem; 
+            font-weight: bold;
+        }
+
+        .active_navigation_item {
+            color: var(--white);
+            text-decoration: underline;
+            text-decoration-color: var(--white);
+        }
+
+        #dashboard-date {
+            color: var(--white);
+            font-size: 2rem; 
+            font-weight: bold;
+        }
+
+        #timeline {
+            position: sticky;
+            top: 10vh;
+            background-color: var(--black);
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            align-items: center;
+            height: 6vh;
+            width: 100%;
+            padding: 0 5vw;
+            z-index: 9;
+        }
+
+        #timeline p {
+            color: var(--white); 
+            font-size: 2rem;
+            z-index: 10; 
+        }
+
+        #current-time {
+            position: relative;
+            z-index: 12; 
+            height: 85%;
+            margin: 0;
+            background-color: var(--purple);
+            border-radius: 0.25rem;
+            padding: 0 8px; 
+        }
+
+        #vertical-line {
+            position: absolute;
+            top: 10vh;
+            left: 50%;
+            height: 90vh;
+            z-index: 11;
+            border-left: 2px dashed var(--purple);
+            transform: translateX(-50%);
+        }
+
+        #content {
+            padding: 2.75vw;
+            display: flex;
+            flex-flow: column nowrap;
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+            animation: scroll-content 20s linear infinite;
+        }
+
+        .tool-container {
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: flex-start;
+            gap: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tool-heading {
+            color: var(--white);
+            font-size: 3rem; 
+            font-weight: bold;
+            background-color: rgba(41, 45, 54, 0.9); 
+            padding: 10px 15px; 
+            border-radius: 8px; 
+            position: relative;
+            z-index: 5;
+        }
+
+        .project-mask-wrapper {
+            width: 100%;
+            height: 9vh;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            background-color: var(--mint-400);
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-mask {
+            display: flex;
+            flex-flow: row nowrap;
+            gap: 0.5rem;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 0.25rem;
+            overflow: hidden;
+            z-index: 3;
+        }
+
+        .project {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            position: absolute;
+            height: 100%;
+            min-width: 100px; 
+            max-width: 100%;  
+            border-radius: 0.25rem;
+            background-color: var(--mint-100);
+            overflow: hidden; 
+            z-index: 4;
+            padding: 5px; 
+        }
+
+        .project-paragraph {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--black);
+            font-size: 1.5rem; 
+            margin: 0;
+            padding: 0 0.5rem;
+            white-space: nowrap;
+            overflow: hidden; 
+            text-overflow: ellipsis; 
+            max-width: 100%; 
+            z-index: 6;
+        }
+
+        @keyframes scroll-content {
+            0% { transform: translateY(0); }
+            5% { transform: translateY(0); }
+            10% { transform: translateY(0); }
+            40% { transform: translateY(calc(-80vh)); }
+            100% { transform: translateY(calc(-80vh)); }
+        }
+    </style>
+
+</head>
+    <header id="main-header">
+        <p class="logo">IDiA</p>
+        <div class="navigation_items">
+            <p class="navigation_item" data-title="3D-Drucker">3D-Drucker</p>
+            <p class="navigation_item active_navigation_item" data-title="CNC">Laser & Fräsen</p>
+        </div>        
+        <p id="dashboard-date"></p>
+    </header>
+    <main id="main">
+        <div id="timeline">
+            <p class="timeline-item"></p>
+            <p class="timeline-item" id="current-time"></p>
+            <p class="timeline-item"></p>
+            <p class="timeline-item"></p>
+            <p class="timeline-item"></p>
+            <p class="timeline-item"></p>
+            <p class="timeline-item"></p>
+            <p class="timeline-item"></p>
+            <p class="timeline-item"></p>
+        </div>
+        <div id="vertical-line"></div>
+        <div id="content"></div>
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            const currentDate = new Date();
+            updateDateOfDashboard();
+            updateTimesOfTimeLine();
+            updateVerticalLine();
+
+            const allowedTools1 = [
+                "Lasercutter",
+                "CNC-Fräse Stepcraft M1000",
+                "CNC-Fräse Modela MDX",
+            ];
+
+            const allowedTools2 = [
+                "3D Drucker M200plus #1",
+                "3D Drucker M200plus #2",
+                "3D Drucker M200plus #3",
+                "3D Drucker M300plus",
+                "3D Drucker M300dual",
+                "3D Drucker Inventure #1"
+            ];
+
+            let allowedTools = allowedTools1;
+            let flag = true;
+
+            function switchSettings() {
+                const content = document.getElementById('content');
+
+                if (flag) {
+                    allowedTools = allowedTools2;
+                    updateNavigationItem("3D-Drucker");
+                    content.style.animation = 'scroll-content 30s linear infinite';
+                } else {
+                    allowedTools = allowedTools1;
+                    updateNavigationItem("Laser & Fräsen");
+                    content.style.animation = 'none';
+                    content.style.transform = 'translateY(0)';
+                }
+                flag = !flag;
+                fetchReservations();
+            }
+
+            function updateNavigationItem(title) {
+                const navItems = document.querySelectorAll('.navigation_item');
+                navItems.forEach(item => {
+                    item.classList.remove('active_navigation_item');
+                    if (item.dataset.title === title) {
+                        item.classList.add('active_navigation_item');
+                    }
+                });
+            }
+
+            setInterval(switchSettings, 15000); 
+
+            async function fetchReservations() {
+                try {
+                    const response = await fetch('/dashboard/reservations');
+                    const data = await response.json();
+                    
+                    const reservationsArray = data.reservations
+                        .filter(reservation => allowedTools.includes(reservation.tool))
+                        .map(reservation => ({
+                            startDate: new Date(reservation.startDate),
+                            endDate: new Date(reservation.endDate),
+                            name: reservation.name || "Untitled Project", 
+                            tool: reservation.tool
+                        }));
+
+                    updateDashboard(reservationsArray);
+                } catch (error) {
+                    console.error('Error fetching reservations:', error);
+                }
+            }
+
+            function updateDateOfDashboard() {
+                const dateElement = document.getElementById('dashboard-date');
+                if (!dateElement) {
+                    console.error("Element with ID 'dashboard-date' not found.");
+                    return;
+                }
+                const now = new Date();
+                const day = prependZeroIfSingleDigit(now.getDate());
+                const month = prependZeroIfSingleDigit(now.getMonth() + 1);
+                const year = now.getFullYear();
+                dateElement.textContent = `${day}.${month}.${year}`;
+            }
+
+            function updateTimesOfTimeLine() {
+                const timeline = document.getElementById('timeline');
+                const childrenAsArray = Array.from(timeline.children);
+                for (let i = 0; i < childrenAsArray.length; i++) {
+                    let timeLineItemHours = (currentDate.getHours() + (i - 1)) % 24;
+                    if (timeLineItemHours < 0) {
+                        timeLineItemHours += 24;
+                    }
+                    timeLineItemHours = prependZeroIfSingleDigit(timeLineItemHours);
+                    let timeLineItemMinutes = currentDate.getMinutes();
+                    timeLineItemMinutes = prependZeroIfSingleDigit(timeLineItemMinutes);
+                    let timeLineItemTime = `${timeLineItemHours}:${timeLineItemMinutes}`;
+                    let timelineItemTextNode = document.createTextNode(timeLineItemTime);
+                    childrenAsArray[i].appendChild(timelineItemTextNode);
+                }
+            }
+
+            function updateVerticalLine() {
+                const line = document.getElementById('vertical-line');
+                const currentTimePos = document.getElementById('current-time').getBoundingClientRect().left;
+                const currentTimeWidth = document.getElementById('current-time').getBoundingClientRect().width;
+                let relativePositionOfLine = currentTimePos + (currentTimeWidth / 2);
+                line.style.left = `${relativePositionOfLine}px`;
+
+                const lineTop = line.getBoundingClientRect().top;
+                const bodyBottom = document.getElementById('main').getBoundingClientRect().bottom;
+                let heightOfLine = bodyBottom - lineTop;
+                line.style.height = `${heightOfLine}px`;
+            }
+
+            function prependZeroIfSingleDigit(number) {
+                return number.toString().padStart(2, '0');
+            }
+
+            function calculateRelativePositionOfProject(project, parent) {
+                const parentWidth = parent.getBoundingClientRect().width;
+                const parentWidthInMinutes = 480;
+
+                const timeLineStartTime = new Date();
+                timeLineStartTime.setHours(currentDate.getHours() - 1);
+                timeLineStartTime.setMinutes(currentDate.getMinutes());
+
+                const totalDifferenceInMinutes = (project.startDate - timeLineStartTime) / 60000;
+                let relativePositionInPixels = (parentWidth * totalDifferenceInMinutes) / parentWidthInMinutes;
+
+                if (relativePositionInPixels < 0) relativePositionInPixels = 0;
+                if (relativePositionInPixels > parentWidth) relativePositionInPixels = parentWidth;
+
+                return relativePositionInPixels;
+            }
+
+            function calculateWidthOfProject(project, parent) {
+                const parentWidth = parent.getBoundingClientRect().width;
+                const parentWidthInMinutes = 480;
+
+                const totalWidthInMinutes = (project.endDate - project.startDate) / 60000;
+                let projectWidthInPixels = (totalWidthInMinutes * parentWidth) / parentWidthInMinutes;
+
+                if (projectWidthInPixels < 0) projectWidthInPixels = 0;
+                if (projectWidthInPixels > parentWidth) projectWidthInPixels = parentWidth;
+
+                return projectWidthInPixels;
+            }
+
+            function addProjectToHTML(value) {
+                const parentMask = document.getElementById(value.tool.replace(/\s+/g, '-'));  
+                if (!parentMask) {
+                    console.error(`Element with ID '${value.tool}' not found.`);
+                    return;
+                }
+                
+                const projectElement = document.createElement('div');
+                const projectTextElement = document.createElement('p');
+                projectTextElement.textContent = value.name;
+                
+                projectElement.appendChild(projectTextElement);
+                parentMask.appendChild(projectElement);
+                
+                projectElement.classList.add('project');
+                projectTextElement.classList.add('project-paragraph');
+                
+                const relativePosition = calculateRelativePositionOfProject(value, parentMask);
+                projectElement.style.left = `${relativePosition}px`;
+                
+                const projectWidth = calculateWidthOfProject(value, parentMask);
+                if (projectWidth > 0) {
+                    projectElement.style.width = `${projectWidth}px`;
+                } else {
+                    projectElement.style.display = 'none';
+                }
+            }
+
+            function addToolContainerToHTML(tool) {
+                const main = document.getElementById('content');
+                if (!main) return;
+
+                const toolContainer = document.createElement('div');
+                const toolHeading = document.createElement('h2');
+                const projectMaskWrapper = document.createElement('div');
+                const projectMask = document.createElement('div');
+
+                toolHeading.textContent = tool;
+                toolContainer.appendChild(toolHeading);
+                toolContainer.appendChild(projectMaskWrapper);
+                projectMaskWrapper.appendChild(projectMask);
+                main.appendChild(toolContainer);
+
+                toolContainer.classList.add('tool-container');
+                toolHeading.classList.add('tool-heading');
+                projectMaskWrapper.classList.add('project-mask-wrapper');
+                projectMask.classList.add('project-mask');
+                
+                projectMask.id = tool.replace(/\s+/g, '-');  
+            }
+
+            function updateDashboard(reservations) {
+                const content = document.getElementById('content');
+                if (!content) {
+                    console.error("Element with ID 'content' not found.");
+                    return;
+                }
+                content.innerHTML = ''; 
+
+                allowedTools.forEach(tool => {
+                    addToolContainerToHTML(tool);
+                });
+
+                reservations.forEach(reservation => {
+                    addProjectToHTML(reservation);
+                });
+
+                updateVerticalLine();  
+            }
+
+            await fetchReservations();
+
+            setInterval(fetchReservations, 5000);
+
+            setInterval(() => {
+                const currentSecond = new Date().getSeconds();
+                if (currentSecond === 0) {
+                    localStorage.setItem('flag', flag);
+                    location.reload();
+                }
+            }, 1000);
+
+            const savedFlag = localStorage.getItem('flag');
+            if (savedFlag !== null) {
+                flag = JSON.parse(savedFlag);
+                switchSettings();
+            }
+
+            const navItems = document.querySelectorAll('.navigation_item');
+
+            function setActiveNavigationItem(index) {
+                navItems.forEach(item => {
+                    item.classList.remove('active_navigation_item');
+                });
+                navItems[index].classList.add('active_navigation_item');
+            }
+
+            setActiveNavigationItem(flag ? 1 : 0);
+
+            setInterval(() => {
+                setActiveNavigationItem(flag ? 1 : 0);
+            }, 15000);
+        });
+    </script>
+</body>
+</html>

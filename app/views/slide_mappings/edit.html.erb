@@ -1,0 +1,25 @@
+<h1>Slide Mapping <%= @slide_mapping.id %></h1>
+<ul>
+  <li>Screen: <%= @screen.name %></li>
+  <li>Slide: <%= @slide.name %></li>
+</ul>
+
+<%= form_with model: @slide_mapping do |form| %>
+  <% if form.object.errors.any? %>
+    <ul>
+      <% form.object.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div>
+    <%= form.label :duration %>
+    <%= form.number_field :duration, in: 10..90, step: 5 %>
+  </div>
+
+  <div>
+    <%= form.submit "Update Slide Mapping" %>
+  </div>
+<% end %>
+

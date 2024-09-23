@@ -1,0 +1,25 @@
+<div class="slide-show-box">
+  <h1 class="index-title"><%= @slide.name %></h1>
+  <div class="show-image-container">
+    <%= image_tag @slide.image, class: "image-prev-show", data: { bs_toggle: "modal", bs_target: "#exampleModal" } %>
+  </div>
+  <div class="show-buttons">
+    <%= link_to "Edit", edit_slide_path(@slide), class: "submit-button showpage-edit-button" %>
+    <%= link_to "&#8617;".html_safe, slides_path, class: "btn btn-outline-secondary back-button" %>
+  </div>
+</div>
+
+<!-- Bootstrap Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">Full size of "<%= @slide.name %>"</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= image_tag @slide.image, class: "modal-image" %>
+      </div>
+    </div>
+  </div>
+</div>

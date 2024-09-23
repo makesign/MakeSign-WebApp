@@ -1,0 +1,48 @@
+<div class="slideshow-show-box">
+
+<!-- Bootstrap carousel: https://getbootstrap.com/docs/5.3/components/carousel/ -->
+
+  <div class="carousel-container slideshow-carousel-container">
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <% @slideshow.slide_mappings.each_with_index do |slide_mapping, index| %>
+          <div class="carousel-item <%= 'active' if index == 0 %>" data-bs-interval="<%= slide_mapping.duration * 1000 %>">
+            <%= image_tag slide_mapping.slide.image, class: 'slideshow-prev d-block w-100', alt: slide_mapping.slide.name if slide_mapping.slide.image.present? %>
+          </div>
+        <% end %>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="slideshow-content">
+    <h1 class="index-title"><%= @slideshow.name %></h1>
+    <div class="slideshow-slidelist">
+      <% if @slideshow.slide_mappings.any? %>
+        <% @slideshow.slide_mappings.each do |slide_mapping| %>
+          <%= image_tag slide_mapping.slide.image, class: "slideshow-show-image" if slide_mapping.slide.image.present? %>
+          <div class="slideshow-show-image-content">
+            <p class="bold-title"><%= slide_mapping.slide.name %></p>
+            <p><%= slide_mapping.duration %> sec</p>
+            <% if slide_mapping.expiry_date.present? %>
+              <p><%= slide_mapping.expiry_date %></p>
+            <% else %>
+              <p style="font-style: italic">no expiry date</p>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="slideshow-show-buttons">
+      <%= link_to "Edit", edit_slideshow_path(@slideshow), class: "submit-button slideshow-showpage-edit-button" %>
+      <%= link_to "&#8617;".html_safe, slideshows_path, class: "btn btn-outline-secondary back-button" %>
+    </div>
+  </div>
+</div>

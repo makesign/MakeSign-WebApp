@@ -1,0 +1,36 @@
+<div class="signin-box">
+  <div class="logo-section">
+    <%= image_tag "Makesign_Logo.png", alt: "Logo", class: "signin-logo" %>
+  </div> 
+  <div class="fillout-section">
+    <h1 class="signin-title">Reset Your Password</h1>
+
+    <%= form_with model: @user, url: password_reset_path(token: params[:token]) do |form| %>
+      <% if form.object.errors.any? %>
+        <% form.object.errors.full_messages.each do |message| %>
+          <% if message.present? %>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+              <%= message %>
+              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <div class="input">
+        <%= form.label :password %>
+        <%= form.password_field :password, class: "form-control form-input", required: true %>
+      </div>
+
+      <div class="input">
+        <%= form.label :password_confirmation %>
+        <%= form.password_field :password_confirmation, class: "form-control form-input", required: true %>
+      </div>
+
+      <div class="signin-submit">
+        <%= form.submit "Reset your Password", class: "submit-button"%>
+      </div>
+    <% end %>
+  </div>
+</div>

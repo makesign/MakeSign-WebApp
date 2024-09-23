@@ -1,0 +1,38 @@
+<div class="slidesession-box">
+  <h1 class="slides-title"><%= @slide.name %></h1>
+
+  <%= form_with model: @slide do |form| %>
+    <% if form.object.errors.any? %>
+        <% form.object.errors.full_messages.each do |message| %>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+            <%= message %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          </div>         
+        <% end %>
+    <% end %>
+
+    <div class="insert-title">
+      <%= form.label :name, "Change the Title of the Slide" %>
+      <%= form.text_field :name, class: "form-control slides-form-input edit-slides-form-input" %>
+    </div>
+
+    <div class="insert-image edit-insert-image">
+      <div>
+        <label for="uploadImage" class="insert-image-field edit-insert-image-field">
+          <p id="image-label">Insert File</p>
+        </label>
+        <%= form.file_field :image, class: "imagefield", id: "uploadImage" %>
+      </div>
+      <div>
+        <%= image_tag @slide.image, class: "slidesession-previmage" if @slide.image.present? %>
+      </div>
+    </div>
+
+    <div class="edit-slide">
+      <%= link_to "Delete", @slide, method: :delete, data: { turbo_method: :delete, turbo_confirm: "Do you really want to delete this slide?" }, class: "btn btn-outline-danger delete-button" %>
+      <%= form.submit "Submit Changes", class: "submit-button editpage-edit-button" %>
+      <%= link_to "&#8617;".html_safe, slide_path(@slide), class: "btn btn-outline-secondary back-button" %>
+    </div>
+  <% end %>
+</div>

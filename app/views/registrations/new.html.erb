@@ -1,0 +1,41 @@
+<div class="signin-box">
+  <div class="logo-section">
+    <%= image_tag "Makesign_Logo.png", alt: "Logo", class: "signin-logo" %>
+  </div>  
+  <div class="fillout-section">
+    <h1 class="signin-title  ">SIGN UP</h1>
+
+    <%= form_with model: @user, url: registration_path do |form| %>
+      <% if form.object.errors.any? %>
+        <% form.object.errors.full_messages.each do |message| %>
+          <% if message.present? %>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+              <%= message %>
+              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <div class="input">
+        <%= form.label :email, "E-Mail" %>
+        <%= form.email_field :email, class: "form-control form-input", placeholder: "name@example.com" %>
+      </div>
+
+      <div class="input">
+        <%= form.label :password %>
+        <%= form.password_field :password, class: "form-control form-input" %>
+      </div>
+
+      <div class="input">
+        <%= form.label :password_confirmation %>
+        <%= form.password_field :password_confirmation, class: "form-control form-input" %>
+      </div>
+
+      <div class="signin-submit">
+        <%= form.submit "Sign Up", class: "submit-button"%>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,69 @@
+<div class="wrapper">
+    <div class="background-theme">
+        <div class="main-content">
+            <h1 class="main-title">Welcome to MakeSign</h1>
+            <p>MakeSign is a a software to easily manage your digital signage.</p>
+            <p>Create and schedule slides in different slideshows and project them on your screen, to show your message to the world!</p>
+        </div>
+        <div class="mainpage-logo">
+            <%= image_tag "Makesign_Cropped.png", alt: "Logo", class: "signin-logo main-logo" %>
+        </div>
+    </div>
+    <div class="index-box">
+        <div class="maincontent-section">
+            <!-- Bootstrap Accordion https://getbootstrap.com/docs/5.0/components/accordion/ -->
+            <h2 class="index-title main-section">What are the Sections?</h2>
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Slides
+                    </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p>In the <strong>Slides Section</strong>, you can create Slides by inserting images (png, jpg, etc.) or GIFs to create Slides. A Slide itself is a visual content, that will be inserted in slideshows and cycled through. Slides will be cropped to a 16:9 aspect ratio, regardless of the image size.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Slideshows
+                    </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p>In the <strong>Slideshows Section</strong>, you can create Slideshows by adding Slides into them. The Slides can have an individual duration time from 10 to 120 seconds. This means, the Slide will be shown for the selected amount of seconds until it cycles through to the next Slide. The Slides can optionally have an expiry date, in which it will be automatically removed from the Slideshow at a certain date.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Screens
+                    </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p>In the <strong>Screens Section</strong>, you can manage the Screens, that are connected to your real physical screens. In Screens, you can select a Slideshow to show on your physical screen. There is an option to Display the Slideshow in fullpage, which will be automatically shown on the physical screen, via the URL.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-section">
+        <h2 class="index-title">MakeSign</h2>
+        <div class="footer-content">
+            <a href="https://github.com/makesign">
+                <!-- image from: https://www.flaticon.com/free-icon/github_3291667?related_id=3291695&origin=search -->
+                <%= image_tag "GitHub_Icon.png", alt: "GitHub Logo", class: "link-logo" %> github.com/makesign
+            </a>
+            <a href="https://makesign.github.io">
+                <%= image_tag "Makesign_Color.png", alt: "MakeSign Logo", class: "link-logo" %> Our Documentation Website
+            </a>
+        </div>
+    </div>
+</div>

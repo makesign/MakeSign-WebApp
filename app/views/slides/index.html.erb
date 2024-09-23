@@ -1,0 +1,27 @@
+<div class="index-box">
+  <h1 class="index-title">Your Slides</h1>
+  <div class="indexbody">
+    
+    <div class="addnew-card addnewslide-card">
+      <%= link_to new_slide_path, class: "addnew-text" do %>
+        <div class="addnew-body">
+          <span>+ Add new Slide</span>
+        </div>
+      <% end %>
+    </div>
+
+    <% @slides.each do |slide| %>
+      <div class="slidescard">
+        <%= link_to slide_path(slide) do %>
+          <div class="slides-previmages">
+            <%= image_tag slide.image, class:"slides-image" if slide.image.present? %>
+            <div class="slide-title">
+              <h5><%= slide.name %></h5>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+    
+  </div>
+</div>

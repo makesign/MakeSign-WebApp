@@ -1,0 +1,19 @@
+<div class="carousel-container carousel-container-display">
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <% @screen.slideshows.each do |slideshow| %>
+          <% slideshow.slide_mappings.each_with_index do |slide_mapping, index| %>
+            <div class="carousel-item carousel-item-display <%= 'active' if index == 0 %>" data-bs-interval="<%= slide_mapping.duration * 1000 %>">
+              <%= image_tag slide_mapping.slide.image, class: 'display-image d-block w-100', alt: slide_mapping.slide.name if slide_mapping.slide.image.present? %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+</div>
+
+<script>
+  setTimeout(function() {
+    location.reload();
+  }, 3600000);
+</script>

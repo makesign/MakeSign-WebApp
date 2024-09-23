@@ -1,0 +1,43 @@
+<div class="slideshowsession-box">
+  <h1 class="index-title">Create a new Slideshow</h1>
+
+  <%= form_with model: @slideshow do |form| %>
+    <% if form.object.errors.any? %>
+        <% form.object.errors.full_messages.each do |message| %>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+            <%= message %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          </div>        
+        <% end %>
+    <% end %>
+
+    <div class="insert-title">
+      <%= form.label :name, "Enter Title" %>
+      <%= form.text_field :name, class: "form-control slides-form-input edit-slideshow-form-input" %>
+    </div>
+
+    <div class="slide-selection-body new-slide-selection-body">
+      <h3 class="index-title">Select your Slides</h3>
+      <div class="slide-selection new-slide-selection">
+      <% Slide.all.each do |slide| %>
+        <div class="slides-checkbox-container new-slides-checkbox-container">
+          <%= form.check_box :slide_ids, { multiple: true, id: "slide_#{slide.id}" }, slide.id, nil %>
+          <label for="slide_<%= slide.id %>">
+            <div class="slides-checkbox">
+              <%= image_tag slide.image, class: "slide-checkbox-image" if slide.image.present? %>
+              <div class="checker">&#10003;</div>
+            </div>
+            <span class="checkbox-slide-title"><%= slide.name %></span>
+          </label>
+        </div>
+      <% end %>
+      </div>
+    </div>
+
+    <div class="edit-slideshow">
+      <%= form.submit "Create Slideshow", class: "submit-button editpage-edit-button", data: { turbo: false } %>
+      <%= link_to "&#8617;".html_safe, slideshows_path, class: "btn btn-outline-secondary back-button" %>
+    </div>
+  <% end %>
+</div>

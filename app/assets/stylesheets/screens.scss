@@ -1,0 +1,68 @@
+/* Screen Edit Page */
+.screensession-box{
+    font-size: 1.15rem;
+    max-width: 90%; 
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto; 
+}
+
+.slideshow-select-section{
+    gap: 1rem;
+    height: 15rem;
+    max-height: 15rem;
+    width: 100rem;
+    display: grid;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+.slideshow-select-section:hover{
+    overflow-y: auto;
+}
+
+.slideshow-checkbox-container{
+    max-width: 100%;
+}
+
+
+/* Screen Show page */
+.screen-show-box{
+    font-size: 1.15rem;
+    max-width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.screen-carousel-container{
+    width: 60%;
+}
+
+.screen-slideshow-prev{
+    margin-top: 1rem;
+    margin-bottom: -1rem;
+}
+
+/* Screen New page */
+.new-slideshow-select-section{
+    height: 30rem;
+    max-height: 30rem;
+}
+
+
+/* Screen Display page */
+.carousel-container-display, 
+.carousel-item-display {
+    width: 100vw;
+    height: 100vh;
+}
+
+.display-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

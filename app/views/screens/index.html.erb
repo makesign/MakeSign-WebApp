@@ -1,0 +1,43 @@
+<div class="index-box">
+  <h1 class="index-title">Your Screens</h1>
+  <div class="indexbody">
+
+    <% @screens.each do |screen| %>
+      <div class="index-card screenscard">
+        <%= link_to screen_path(screen), class: "screenlink", data: { turbo: false } do %>
+          <hr class="hr-top">
+          <div class="screens-images-container">
+            <% screen.slideshows.each do |slideshow| %>
+              <% first_slide = slideshow.slide_mappings.first %>
+                <% if first_slide && first_slide.slide.image.present? %>
+                  <div class="screens-previmages">
+                    <%= image_tag first_slide.slide.image, class: 'screen-image', alt: first_slide.slide.name %>
+                  </div>
+                <% end %>
+              <% break %> 
+            <% end %>
+          </div>
+          <hr class="hr-bottom">
+          <div class="screen-header">
+            <div class="screens-icon">
+              <!-- image from: https://www.flaticon.com/free-icon/monitor_3474360 -->
+              <%= image_tag "Screen_Icon.png", alt: "Screen_Icon", class: "screen-icon-image" %>
+            </div>
+            <div class="screen-title">
+              <h3><%= screen.name %></h3>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="addnew-card addnewscreen-card">
+      <%= link_to new_screen_path, class: "addnew-text" do %>
+        <div class="addnew-body">
+          <span>+ Add new Screen</span>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>

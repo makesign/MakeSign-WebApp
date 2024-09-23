@@ -1,0 +1,54 @@
+.signin-box{
+    padding: 5rem;
+    display: flex;
+    justify-content: center;
+    margin-right: 10rem;
+    font-size: 1.15rem;
+}
+
+.signin-title{
+    font-family: Htw-Bold;
+}
+
+.signin-logo{
+    height: 30rem;
+    width: auto;
+}
+
+.fillout-section{
+    padding-top: 3rem;
+    max-width: 30rem;
+    width: 100%
+}
+
+.input{
+    display: grid;
+    gap: 0.25rem;
+    margin-bottom: 1rem;
+}
+
+.form-input{
+    width: 100%;
+    max-width: 30rem;
+}
+
+.signin-submit{
+    display: grid;
+}
+
+.undersection{
+    font-size: 1rem;
+}
+
+.signup-section{
+    display: flex;
+    gap: 0.5rem;
+}
+
+.signup-now{
+    text-decoration: none;
+    color: black;
+}
+.signup-now:hover{
+    color: blue;
+}

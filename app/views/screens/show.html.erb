@@ -1,0 +1,46 @@
+<div class="screen-show-box">
+  <h1 class="bold-title"><%= @screen.name %></h1>
+
+  <div class="carousel-container screen-carousel-container">
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <% @screen.slideshows.each do |slideshow| %>
+          <% slideshow.slide_mappings.each_with_index do |slide_mapping, index| %>
+            <div class="carousel-item <%= 'active' if index == 0 %>" data-bs-interval="<%= slide_mapping.duration * 1000 %>">
+              <%= image_tag slide_mapping.slide.image, class: 'slideshow-prev d-block w-100', alt: slide_mapping.slide.name if slide_mapping.slide.image.present? %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="screen-slideshow-prev">
+    <% if @screen.slideshows.any? %>
+      <% @screen.slideshows.each do |slideshow| %>
+        <h5><%= slideshow.name %></h5>
+        <div class="slideshows-images-container-edit">
+          <% slideshow.slides.each do |slide| %>
+            <div class="slideshows-previmages-edit">
+              <%= image_tag slide.image, class: "slideshow-image" if slide.image.present? %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="show-buttons">
+    <%= link_to "Display", display_screen_path(@screen), class: "btn btn-outline-primary back-button", data: { turbo: false } %>
+    <%= link_to "Edit", edit_screen_path(@screen), class: "submit-button showpage-edit-button", data: { turbo: false } %>
+    <%= link_to "&#8617;".html_safe, screens_path, class: "btn btn-outline-secondary back-button" %>
+  </div>
+</div>

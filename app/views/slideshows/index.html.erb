@@ -1,0 +1,33 @@
+<div class="index-box">
+  <h1 class="index-title">Your Slideshows</h1>
+  <div class="indexbody">
+
+    <% @slideshows.each do |slideshow| %>
+      <div class="index-card slideshowscard">
+        <%= link_to slideshow_path(slideshow), class: "slideshowlink", data: { turbo: false } do %>
+          <div class="slideshows-images-container">
+            <% slideshow.slides.each do |slide| %>
+              <div class="slideshows-previmages">
+                <%= image_tag slide.image, class: "slideshow-image" if slide.image.present? %>
+              </div>
+            <% end %>
+          </div>
+          <div class="slideshow-header">
+            <div class="slideshow-title">
+              <h4><%= slideshow.name %></h4>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="addnew-card addnewslideshow-card">
+      <%= link_to new_slideshow_path, class: "addnew-text" do %>
+        <div class="addnew-body">
+          <span>+ Add new Slideshow</span>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>

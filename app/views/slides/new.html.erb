@@ -1,0 +1,33 @@
+<div class="slidesession-box">
+  <h1 class="slides-title">Create a new Slide</h1>
+
+  <%= form_with model: @slide do |form| %>
+
+    <% if form.object.errors.any? %>
+        <% form.object.errors.full_messages.each do |message| %>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+            <%= message %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          </div>         
+        <% end %>
+    <% end %>
+
+    <div class="insert-title">
+      <%= form.label :name, "Enter Title" %>
+      <%= form.text_field :name, class: "form-control slides-form-input" %>
+    </div>
+
+    <div class="insert-image">
+      <label for="uploadImage" class="insert-image-field">
+        <p id="image-label">Insert File</p>
+      </label>
+      <%= form.file_field :image, class: "imagefield", id: "uploadImage" %>
+    </div>
+
+    <div class="create-slide">
+      <%= form.submit "Create Slide", class: "submit-button editpage-edit-button" %>
+      <%= link_to "&#8617;".html_safe, slides_path, class: "btn btn-outline-secondary back-button" %>
+    </div>
+  <% end %>
+</div>
