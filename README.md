@@ -17,4 +17,4 @@ This setup allows for flexible and targeted digital signage solutions, making it
 
 ## Read more in our documentation: 
 
-[MediaSign-Website](MediaSign.github.io)
+[MediaSign-Website](https://www.MediaSign.github.io)
