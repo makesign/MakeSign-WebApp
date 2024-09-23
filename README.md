@@ -15,6 +15,6 @@ MakeSign is a dynamic digital signage solution designed to manage and display co
 
 This setup allows for flexible and targeted digital signage solutions, making it easy to control what content is shown where and when.
 
-# Read more in our documentation: 
+## Read more in our documentation: 
 
 [MediaSign-Website](MediaSign.github.io)
